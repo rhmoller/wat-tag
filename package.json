@@ -1,0 +1,33 @@
+{
+  "name": "wat-tag",
+  "version": "1.0.0",
+  "description": "A tag function for compiling inline WebAssembly written in the WAT text format",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "WebAssembly",
+    "wasm",
+    "wabt",
+    "wat",
+    "wast",
+    "tagged-template-literal"
+  ],
+  "author": "Rene Hangstrup Møller <rhmoller@gmail.com> (http://giddyplanet.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhmoller/wat-tag.git"
+  },
+  "dependencies": {
+    "wabt": "^1.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.0",
+    "@types/webassembly-js-api": "0.0.2",
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.3333"
+  }
+}
