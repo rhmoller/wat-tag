@@ -1,6 +1,7 @@
 .idea
 node_modules
-dist
+dist/*.test.*
 .prettierrc
 tsconfig.json
 src
+*.config.js
