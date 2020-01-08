@@ -1,6 +1,6 @@
 {
   "name": "wat-tag",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A tag function for compiling inline WebAssembly written in the WAT text format",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
