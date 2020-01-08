@@ -1,4 +1,4 @@
-import { wat } from "./";
+import { wat, watb } from "./";
 
 describe("wat-tag", () => {
   it("Compiles an empty module", async done => {
@@ -30,13 +30,13 @@ describe("wat-tag", () => {
             (module
                 ;; import trace function that accepts a single i32 argument
                 (func $trace (import "js" "trace") (param i32))
-                
+
                 ;; prints numbers from 1 to $max
                 (func (export "countTo") (param $max i32)
                     ;; define variable $c and initialize it to 0
                     (local $c i32)
                     (set_local $c (i32.const 0))
-            
+
                     ;; start a loop
                     (loop $counting
                         ;; increment $c by 1
@@ -61,4 +61,15 @@ describe("wat-tag", () => {
     expect(log).toEqual([1, 2, 3, 4, 5]);
     done();
   });
+});
+
+describe("watb", () => {
+  it("returns a buffer containing WASM in binary format", () => {
+    const buffer = watb`(module)`;
+    // first four bytes should spill out \0asm
+    expect(buffer[0]).toEqual(0); // \0
+    expect(buffer[1]).toEqual(0x61); // a
+    expect(buffer[2]).toEqual(0x73); // s
+    expect(buffer[3]).toEqual(0x6d); // m
+  })
 });
