@@ -3,7 +3,7 @@ const wabt = require("wabt")();
 
 export async function wat(strings: TemplateStringsArray, ...values: any[]) {
   const buffer = watb(strings, values);
-  return WebAssembly.compile(buffer);
+  return WebAssembly.compile(buffer as BufferSource);
 }
 
 export function watb(strings: TemplateStringsArray, ...values: any[]) {
