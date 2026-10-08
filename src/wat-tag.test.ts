@@ -1,14 +1,13 @@
 import { wat, watb } from "./";
 
 describe("wat-tag", () => {
-  it("Compiles an empty module", async done => {
+  it("Compiles an empty module", async () => {
     const module = await wat`(module)`;
     const instance = WebAssembly.instantiate(module);
     expect(instance).not.toBe(null);
-    done();
   });
 
-  it("Compiles the square function", async done => {
+  it("Compiles the square function", async () => {
     const module = await wat`
             (module
                 (func (export "square") (param $i i32) (result i32)
@@ -21,11 +20,10 @@ describe("wat-tag", () => {
     const instance = await WebAssembly.instantiate(module);
 
     expect(instance).not.toBe(null);
-    expect(instance.exports.square(3)).toBe(9);
-    done();
+    expect((instance.exports.square as Function)(3)).toBe(9);
   });
 
-  it("counts to 5", async done => {
+  it("counts to 5", async () => {
     const module = await wat`
             (module
                 ;; import trace function that accepts a single i32 argument
@@ -57,9 +55,8 @@ describe("wat-tag", () => {
       }
     });
 
-    instance.exports.countTo(5);
+    (instance.exports.countTo as Function)(5);
     expect(log).toEqual([1, 2, 3, 4, 5]);
-    done();
   });
 });
 
